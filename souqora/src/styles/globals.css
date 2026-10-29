@@ -1,0 +1,315 @@
+@import "tailwindcss";
+
+/* ============================================
+   Design Tokens — Light Mode (default)
+   ============================================ */
+:root {
+  /* Brand — Warm Bronze & Deep Slate */
+  --color-primary: #1A1A2E;
+  --color-primary-light: #2D2D44;
+  --color-primary-dark: #0F0F1E;
+  --color-primary-foreground: #FFFFFF;
+
+  /* Surfaces — Warm Ivory & Clean White */
+  --color-surface: #FAFAF8;
+  --color-surface-alt: #F5F4F0;
+  --color-surface-elevated: #FFFFFF;
+  --color-surface-overlay: rgba(26, 26, 46, 0.5);
+
+  /* Text — Rich High-Contrast */
+  --color-text: #1A1A2E;
+  --color-text-muted: #6B7085;
+  --color-text-inverted: #FFFFFF;
+  --color-text-link: #B8860B;
+
+  /* Accents — Warm Copper Bronze */
+  --color-accent: #C4933F;
+  --color-accent-light: #D4A854;
+  --color-accent-dark: #A67C34;
+  --color-accent-foreground: #FFFFFF;
+
+  --color-accent-alt: #E85D4A;
+  --color-accent-alt-light: #F07060;
+  --color-accent-alt-foreground: #FFFFFF;
+
+  /* Borders — Subtle warm neutral */
+  --color-border: #E8E6E1;
+  --color-border-light: #F0EEE9;
+  --color-border-focus: #C4933F;
+
+  /* Status */
+  --color-success: #2D8A56;
+  --color-success-light: #E8F5EE;
+  --color-error: #D94040;
+  --color-error-light: #FDE8E8;
+  --color-warning: #E5A100;
+  --color-warning-light: #FDF5E1;
+  --color-info: #3068C8;
+  --color-info-light: #E3EDFA;
+
+  /* Shadows — Refined warm tones */
+  --shadow-sm: 0 1px 3px rgba(26, 26, 46, 0.04);
+  --shadow-md: 0 4px 12px rgba(26, 26, 46, 0.06);
+  --shadow-lg: 0 8px 24px rgba(26, 26, 46, 0.08);
+  --shadow-xl: 0 16px 40px rgba(26, 26, 46, 0.10);
+
+  /* Radius — Clean, not overly rounded */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-full: 9999px;
+
+  /* Typography */
+  --font-arabic: "Cairo", "Alexandria", "IBM Plex Sans Arabic", "Noto Sans Arabic", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-latin: "Inter", "Helvetica Neue", "Arial", sans-serif;
+
+  /* Spacing Scale */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-normal: 250ms ease;
+  --transition-slow: 350ms ease;
+
+  /* Category Colors — Distinctive per category */
+  --cat-real-estate: #2563EB;
+  --cat-vehicles: #0F766E;
+  --cat-electronics: #4338CA;
+  --cat-fashion: #9F1239;
+  --cat-home: #B45309;
+  --cat-beauty: #BE185D;
+  --cat-gaming: #6D28D9;
+  --cat-health: #047857;
+}
+
+/* ============================================
+   Design Tokens — Dark Mode
+   ============================================ */
+[data-theme="dark"] {
+  --color-primary: #F0ECE4;
+  --color-primary-light: #FFF8F0;
+  --color-primary-dark: #D4D0C8;
+  --color-primary-foreground: #141420;
+
+  --color-surface: #141420;
+  --color-surface-alt: #1C1C2E;
+  --color-surface-elevated: #222236;
+  --color-surface-overlay: rgba(0, 0, 0, 0.7);
+
+  --color-text: #F0ECE4;
+  --color-text-muted: #9CA3B8;
+  --color-text-inverted: #141420;
+  --color-text-link: #D4A854;
+
+  --color-accent: #D4A854;
+  --color-accent-light: #E0BC6E;
+  --color-accent-dark: #C4933F;
+  --color-accent-foreground: #141420;
+
+  --color-accent-alt: #F07060;
+  --color-accent-alt-light: #F58878;
+  --color-accent-alt-foreground: #141420;
+
+  --color-border: #2E2E44;
+  --color-border-light: #252538;
+  --color-border-focus: #D4A854;
+
+  --color-success: #34D399;
+  --color-success-light: #052E16;
+  --color-error: #F87171;
+  --color-error-light: #450A0A;
+  --color-warning: #FBBF24;
+  --color-warning-light: #451A03;
+  --color-info: #60A5FA;
+  --color-info-light: #172554;
+
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.25);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.35);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.4);
+  --shadow-xl: 0 16px 40px rgba(0, 0, 0, 0.45);
+}
+
+/* ============================================
+   Base Styles
+   ============================================ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-arabic);
+  color: var(--color-text);
+  background-color: var(--color-surface);
+  line-height: 1.7;
+  min-height: 100dvh;
+}
+
+[dir="ltr"] body,
+[lang="en"] body {
+  font-family: var(--font-latin);
+}
+
+/* ============================================
+   Typography — Base Headings (layered so utility classes override)
+   ============================================ */
+@layer base {
+  h1, h2, h3, h4, h5, h6 {
+    line-height: 1.35;
+    font-weight: 700;
+    color: var(--color-text);
+  }
+
+  [dir="ltr"] h1, [dir="ltr"] h2, [dir="ltr"] h3,
+  [dir="ltr"] h4, [dir="ltr"] h5, [dir="ltr"] h6 {
+    letter-spacing: -0.02em;
+  }
+
+  [dir="rtl"] h1, [dir="rtl"] h2, [dir="rtl"] h3,
+  [dir="rtl"] h4, [dir="rtl"] h5, [dir="rtl"] h6 {
+    letter-spacing: normal;
+  }
+
+  h1 { font-size: 2.5rem; font-weight: 800; }
+  h2 { font-size: 1.875rem; font-weight: 700; }
+  h3 { font-size: 1.375rem; }
+  h4 { font-size: 1.125rem; }
+  h5 { font-size: 1rem; }
+  h6 { font-size: 0.875rem; }
+
+  @media (max-width: 768px) {
+    h1 { font-size: 1.75rem; }
+    h2 { font-size: 1.375rem; }
+    h3 { font-size: 1.125rem; }
+  }
+}
+
+a {
+  color: var(--color-text-link);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--color-accent);
+}
+
+/* ============================================
+   Focus Styles
+   ============================================ */
+:focus-visible {
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* ============================================
+   Scrollbar
+   ============================================ */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-muted);
+}
+
+/* ============================================
+   Reduced Motion
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ============================================
+   Utilities
+   ============================================ */
+.container-main {
+  width: 100%;
+  max-width: 1400px;
+  margin-inline: auto;
+  padding-inline: var(--space-4);
+}
+
+@media (min-width: 768px) {
+  .container-main {
+    padding-inline: var(--space-6);
+  }
+}
+
+@media (min-width: 1280px) {
+  .container-main {
+    padding-inline: var(--space-8);
+  }
+}
+
+.section-spacing {
+  padding-block: var(--space-12);
+}
+
+@media (min-width: 768px) {
+  .section-spacing {
+    padding-block: var(--space-16);
+  }
+}
+
+@media (min-width: 1280px) {
+  .section-spacing {
+    padding-block: var(--space-20);
+  }
+}
+
+/* Hide scrollbar but allow scroll */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Editorial text accent — underline with brand color */
+.text-accent-underline {
+  text-decoration-color: var(--color-accent);
+  text-underline-offset: 4px;
+  text-decoration-thickness: 2px;
+}
